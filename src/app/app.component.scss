@@ -1,0 +1,9 @@
+@import 'abstracts/variables';
+
+h2{
+    color: $text-color;
+}
+
+.mat-toolbar {
+    justify-content: space-between;
+}
