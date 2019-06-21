@@ -14,4 +14,8 @@ export class SnackBarNotification {
     this.notification.next(message);
   }
 
+  public notifyError(message: string){
+    this.notification.next(message);
+  }
+
 }
