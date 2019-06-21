@@ -10,12 +10,14 @@ import { AppMaterialModule } from './app-material.module';
 // <<< Importar Componentes >>>
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   // Componentes, Pipes y Directivas
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    HomeComponent
   ],
   // Modulos
   imports: [

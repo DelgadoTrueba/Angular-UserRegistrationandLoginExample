@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  
+  <span>JWT LOGIN</span>
+
+  <span>
+    
+    <!--<app-date format="medium"></app-date>-->
+
+    <button (click)="logout()" mat-button>
+      <span>{{username}}</span>
+      <mat-icon>person</mat-icon>
+      <span>Logout</span>
+    </button>
+
+    <button (click)="profile()" mat-button>
+      <mat-icon>account_box</mat-icon>
+      <span>Profile</span>
+    </button>
+
+  </span>
+
+</mat-toolbar>
+   
+<router-outlet></router-outlet>
+
+<br/>
