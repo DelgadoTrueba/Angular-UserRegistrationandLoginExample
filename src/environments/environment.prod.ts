@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  VERSION: require('../../package.json').version,
+  API: 'https://betca-tpv-spring.herokuapp.com/api/v0'
 };

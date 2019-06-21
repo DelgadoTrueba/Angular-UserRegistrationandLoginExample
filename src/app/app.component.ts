@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Angular-UserRegistrationandLoginExamplee';
+
+  version: string;
+  apiEndPoint: string;
+  profile: string;
+
+  constructor() {
+    this.version = environment.VERSION;
+    this.apiEndPoint = environment.API;
+    this.profile = environment.production ? 'Production' : 'Develop';
+  }
 }

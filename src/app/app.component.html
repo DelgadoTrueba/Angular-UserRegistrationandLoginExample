@@ -1,24 +1,8 @@
-<mat-toolbar color="primary">
-
-  <span>JWT LOGIN EXAMPLE</span>
-  
-  <span>
-
-    <button (click)="logout()" mat-button>
-      <span>{{username}}</span>
-      <mat-icon>person</mat-icon>
-      <span>Logout</span>
-    </button>
-
-    <button (click)="profile()" mat-button>
-      <mat-icon>account_box</mat-icon>
-      <span>Profile</span>
-    </button>
-
-  </span>
-
-</mat-toolbar>
-
-<h2>HOLA</h2>
 
 <router-outlet></router-outlet>
+
+<mat-toolbar color="primary">
+  <h1>delgadotrueba.com | Estudiante del grado de ingeniería software</h1>
+  <h2>API: {{apiEndPoint}}</h2>
+  <h2>Version: {{version}} (In {{profile}})</h2>
+</mat-toolbar>
