@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './app-material.module';
+import { CoreModule } from './core/core.module';
 
 
 // <<< Importar Componentes >>>
@@ -26,6 +27,8 @@ import { HomeComponent } from './home/home.component';
 
     BrowserAnimationsModule,
     AppMaterialModule,
+
+    CoreModule,
   ],
   // Servicos
   providers: [],
