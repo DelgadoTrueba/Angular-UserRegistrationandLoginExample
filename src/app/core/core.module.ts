@@ -13,6 +13,7 @@ import { SnackBarNotification } from './components/snack-bar/snack-bar-notificat
 // <<< Importar Componentes >>>
 import { DateComponent } from './components/date/date.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import { TokensService } from './services/tokens.service';
 
 @NgModule({
   // Modulos
@@ -40,7 +41,8 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
   // Servicos
   providers: [
     SnackBarNotification,
-    HttpService
+    HttpService,
+    TokensService
   ]
 })
 export class CoreModule {
