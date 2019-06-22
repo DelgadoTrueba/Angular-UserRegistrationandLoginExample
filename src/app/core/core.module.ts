@@ -15,6 +15,7 @@ import { TokensService } from './services/tokens.service';
 import { DateComponent } from './components/date/date.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { CancelYesDialogComponent } from './components/cancel-yes-dialog/cancel-yes-dialog.component';
+import { CrudComponent } from './components/crud/crud.component';
 
 @NgModule({
   // Modulos
@@ -30,12 +31,14 @@ import { CancelYesDialogComponent } from './components/cancel-yes-dialog/cancel-
     DateComponent,
     SnackBarComponent,
     CancelYesDialogComponent,
+    CrudComponent,
   ],
   // Exports Componentes, Pipes y Directivas
   exports: [
     DateComponent,
     SnackBarComponent,
     CancelYesDialogComponent,
+    CrudComponent,
   ],
   // Dialog
   entryComponents: [

@@ -1,0 +1,3 @@
+<!-- Default: [createAction]="true" [readAction]="true" [updateAction]="true" [deleteAction]="true"-->
+<app-crud [data]="data" [title]="title" [columns]="columns"
+          (create)="create()" (read)="read($event)" (update)="update($event)" (delete)=delete($event)></app-crud>
