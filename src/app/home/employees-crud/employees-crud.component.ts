@@ -27,6 +27,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class EmployeesCrudComponent implements OnInit {
 
+  static URL: string = "EmployeesCrud"
+
   title = 'Users management';
   columns = ['position', 'name', 'symbol'];
   data = ELEMENT_DATA;

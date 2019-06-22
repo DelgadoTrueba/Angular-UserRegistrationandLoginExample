@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { TokensService } from 'src/app/core/services/tokens.service';
+import { Router } from '@angular/router';
+import { HomeComponent } from 'src/app/home/home.component';
 
 
 @Component({
@@ -17,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _tokensService: TokensService,
+    private router: Router,
   ){ }
 
   ngOnInit() {
@@ -43,7 +46,10 @@ export class LoginComponent implements OnInit {
     let password: string = this.userForm.value.password;
 
     this._tokensService.login(user, password).subscribe(
-      (token) => {console.log(token)}
+      (token) => {
+        //console.log(token)
+        this.router.navigate([HomeComponent.URL])
+      }
     );
   }
 
