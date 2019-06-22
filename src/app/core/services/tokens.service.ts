@@ -11,8 +11,8 @@ export class TokensService {
     constructor(private httpService: HttpService) {
     }
 
-    login(mobile: number, password: string): Observable<any> {
-        return this.httpService.login(mobile, password, TokensService.END_POINT);
+    login(user: string, password: string): Observable<any> {
+        return this.httpService.login(user, password, TokensService.END_POINT);
     }
 
     logout(): void {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { TokensService } from 'src/app/core/services/tokens.service';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
+    private _tokensService: TokensService,
   ){ }
 
   ngOnInit() {
@@ -35,7 +37,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.userForm.value);
+    let user: string = this.userForm.value.userName;
+    let password: string = this.userForm.value.password;
+
+    this._tokensService.login(user, password).subscribe(
+      (token) => {console.log(token)}
+    );
   }
 
 }

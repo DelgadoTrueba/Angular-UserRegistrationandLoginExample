@@ -27,6 +27,7 @@ export class HttpService {
   private responseType: string;
 
   private successfulNotification = undefined;
+  private requestToken: boolean;
   private printDirectly: boolean;
 
   constructor(
@@ -37,12 +38,20 @@ export class HttpService {
     this.resetOptions();
   }
 
-  login(mobile: number, password: string, endPoint: string): Observable<any> {
-    return this.authBasic(mobile, password).post(endPoint).pipe(
+  login(user: string, password: string, endPoint: string): Observable<any> {
+    return this.authBasic(user, password).post(endPoint).pipe(
       map(token => {
-        this.token = token;
-        this.token.user = new JwtHelperService().decodeToken(token.token).user;
-        this.token.roles = new JwtHelperService().decodeToken(token.token).roles;
+        
+        token = token.substring(6);
+
+        const helper = new JwtHelperService();
+
+        const decodedToken = helper.decodeToken(token);
+
+        this.token = new Token(token, decodedToken.user, decodedToken.roles);
+ 
+        return  this.token;
+
       }), catchError(error => {
         return this.handleError(error);
       })
@@ -121,8 +130,11 @@ export class HttpService {
     );
   }
  
-  private authBasic(mobile: number, password: string): HttpService {
-    return this.header('Authorization', 'Basic ' + btoa(mobile + ':' + password));
+  private authBasic(user: string, password: string): HttpService {
+    this.token = undefined;
+    this.requestToken = true;
+    this.header('Authorization', 'Basic ' + btoa(user + ':' + password));
+    return this;
   }
   
   private header(key: string, value: string): HttpService {
@@ -151,9 +163,15 @@ export class HttpService {
   }
 
   private extractData(response): any {
+
     if (this.successfulNotification) {
       this.snackBarNotification.notify(this.successfulNotification);
       this.successfulNotification = undefined;
+    }
+
+    if(this.requestToken){
+      this.requestToken = false;
+      return response.headers.get('Authorization');
     }
 
     const contentType = response.headers.get('content-type');
@@ -185,7 +203,7 @@ export class HttpService {
   private handleError(response): any {
     
     let error: Error;
-    
+
     if (response.status === HttpService.UNAUTHORIZED) {
       
       this.snackBarNotification.notifyError('Unauthorized'/*, 'Error'*/);
