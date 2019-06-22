@@ -9,11 +9,12 @@ import { AppMaterialModule } from '../app-material.module';
 // <<< Importar Servicios >>>
 import { HttpService } from './services/http.service';
 import { SnackBarNotification } from './components/snack-bar/snack-bar-notification.service';
+import { TokensService } from './services/tokens.service';
 
 // <<< Importar Componentes >>>
 import { DateComponent } from './components/date/date.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
-import { TokensService } from './services/tokens.service';
+import { CancelYesDialogComponent } from './components/cancel-yes-dialog/cancel-yes-dialog.component';
 
 @NgModule({
   // Modulos
@@ -28,15 +29,17 @@ import { TokensService } from './services/tokens.service';
   declarations: [
     DateComponent,
     SnackBarComponent,
+    CancelYesDialogComponent,
   ],
   // Exports Componentes, Pipes y Directivas
   exports: [
     DateComponent,
-    SnackBarComponent 
+    SnackBarComponent,
+    CancelYesDialogComponent,
   ],
   // Dialog
   entryComponents: [
-   
+    CancelYesDialogComponent,
   ],
   // Servicos
   providers: [
