@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 
 import {
     MatAutocompleteModule,
+    MatBadgeModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
@@ -9,7 +10,9 @@ import {
     MatChipsModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatDividerModule,
     MatExpansionModule,
+    MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
     MatInputModule,
@@ -31,12 +34,13 @@ import {
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
 } from '@angular/material';
 
 @NgModule({
     imports: [
         MatAutocompleteModule,
+        MatBadgeModule,
         MatButtonModule,
         MatButtonToggleModule,
         MatCardModule,
@@ -45,7 +49,9 @@ import {
         MatStepperModule,
         MatDatepickerModule,
         MatDialogModule,
+        MatDividerModule,
         MatExpansionModule,
+        MatFormFieldModule,
         MatGridListModule,
         MatIconModule,
         MatInputModule,
@@ -70,6 +76,7 @@ import {
     ],
     exports: [
         MatAutocompleteModule,
+        MatBadgeModule,
         MatButtonModule,
         MatButtonToggleModule,
         MatCardModule,
@@ -78,7 +85,9 @@ import {
         MatStepperModule,
         MatDatepickerModule,
         MatDialogModule,
+        MatDividerModule,
         MatExpansionModule,
+        MatFormFieldModule,
         MatGridListModule,
         MatIconModule,
         MatInputModule,
