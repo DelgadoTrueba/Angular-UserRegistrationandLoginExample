@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokensService } from '../core/services/tokens.service';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,15 @@ export class HomeComponent implements OnInit {
 
   static URL = "home";
 
-  constructor() { }
+  constructor(
+    private tokensService: TokensService,
+  ) { }
 
   ngOnInit() {
+  }
+
+  logout(){
+    this.tokensService.logout();
   }
 
 }
