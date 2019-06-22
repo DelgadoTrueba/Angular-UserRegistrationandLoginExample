@@ -4,11 +4,16 @@
   
   <app-date format="medium"></app-date>
 
-  <button mat-button>
+  <button (click)="register()" mat-button *ngIf="isLoginUrl()">
     <mat-icon>person_outline</mat-icon>
     <span>Register</span>
   </button>
 
+  <button (click)="login()" mat-button *ngIf="!isLoginUrl()">
+    <mat-icon>person_outline</mat-icon>
+    <span>Login</span>
+  </button>
+
 </mat-toolbar>
 
-<app-login></app-login>
+<router-outlet></router-outlet>

@@ -10,6 +10,8 @@ import { TokensService } from 'src/app/core/services/tokens.service';
 })
 export class LoginComponent implements OnInit {
 
+  static URL: string = "login";
+
   public userForm: FormGroup; 
 
   constructor(

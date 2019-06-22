@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './welcome/login/login.component';
+import { RegisterComponent } from './welcome/register/register.component';
 
 @NgModule({
   // Componentes, Pipes y Directivas
@@ -21,7 +22,8 @@ import { LoginComponent } from './welcome/login/login.component';
     AppComponent,
     WelcomeComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   // Modulos
   imports: [
