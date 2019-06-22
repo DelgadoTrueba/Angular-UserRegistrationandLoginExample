@@ -2,58 +2,20 @@
   <div class="login">
     <h2>Login</h2>
 
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit(); onReset()">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit();">
     
       <mat-form-field class="full-width">
-        <input matInput placeholder="First Name" formControlName="firstName" required>
-        <mat-error *ngIf="firstNameRequired()">
-            El nombre es obligatorio.
-          </mat-error>
-      </mat-form-field>
-    
-      <mat-form-field class="full-width">
-          <input matInput placeholder="Last Name" formControlName="lastName" required>
-          <mat-error *ngIf="lastNameRequired()">
-              Los apellidos son obligatorios.
-            </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-            <input matInput placeholder="Address" formControlName="address" required>
-            <mat-error *ngIf="addressRequired()">
-                El dominicilio es obligatorio.
-              </mat-error>
-          </mat-form-field>
-    
-      <mat-form-field class="full-width">
-          <input matInput placeholder="Email" formControlName="email" required>
-          <mat-error *ngIf="emailRequired()">
-            El email es obligatorio.
-          </mat-error>
-          <mat-error *ngIf="emailFormat()">
-              El email debe contener almenos un caracter @.
-          </mat-error>
+        <input matInput placeholder="User Name" formControlName="userName" required>
+        <mat-error *ngIf="userNameRequired()">
+          This field is required.
+        </mat-error>
       </mat-form-field>
     
       <mat-form-field class="full-width">
         <input matInput placeholder="Password" formControlName="password" required type="password">
         <mat-error *ngIf="passwordRequired()">
-          Por favor introduzca una contraseña
+          This field is required.
         </mat-error>
-        <mat-error *ngIf="passwordFormat()">
-            La contraseña debe contener un minúscula, una mayúscula, un numero, un simbolo especial @#$%_, una 
-            longitud de al menos 6 carácteres y máximo 20.
-          </mat-error>
-      </mat-form-field>
-    
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
-          <mat-error *ngIf="confirmPasswordRequired()">
-            Este campo es obligatorio.
-          </mat-error>  
-          <mat-error *ngIf="confirmPasswordNotSame()">
-            La contraseña no coincide 
-          </mat-error>
       </mat-form-field>
     
       <br><br>
