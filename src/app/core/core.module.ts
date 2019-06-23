@@ -2,6 +2,7 @@
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppMaterialModule } from '../app-material.module';
@@ -16,12 +17,14 @@ import { DateComponent } from './components/date/date.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { CancelYesDialogComponent } from './components/cancel-yes-dialog/cancel-yes-dialog.component';
 import { CrudComponent } from './components/crud/crud.component';
+import { CruzDialogComponent } from './components/cruz-dialog/cruz-dialog.component';
 
 @NgModule({
   // Modulos
   imports: [
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
 
     BrowserAnimationsModule,
     AppMaterialModule
@@ -32,6 +35,7 @@ import { CrudComponent } from './components/crud/crud.component';
     SnackBarComponent,
     CancelYesDialogComponent,
     CrudComponent,
+    CruzDialogComponent,
   ],
   // Exports Componentes, Pipes y Directivas
   exports: [
@@ -39,10 +43,12 @@ import { CrudComponent } from './components/crud/crud.component';
     SnackBarComponent,
     CancelYesDialogComponent,
     CrudComponent,
+    CruzDialogComponent
   ],
   // Dialog
   entryComponents: [
     CancelYesDialogComponent,
+    CruzDialogComponent
   ],
   // Servicos
   providers: [

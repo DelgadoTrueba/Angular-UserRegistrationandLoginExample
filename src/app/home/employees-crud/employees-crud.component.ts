@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './employee.service';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { CruzDialogComponent } from 'src/app/core/components/cruz-dialog/cruz-dialog.component';
 
 @Component({
   selector: 'app-employees-crud',
@@ -16,6 +18,7 @@ export class EmployeesCrudComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -30,6 +33,7 @@ export class EmployeesCrudComponent implements OnInit {
 
   read($event){
     console.log("read", $event);
+    this.openDialog();
   }
 
   update($event){
@@ -38,6 +42,16 @@ export class EmployeesCrudComponent implements OnInit {
 
   delete($event){
     console.log("delete", $event);
+  }
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(CruzDialogComponent, dialogConfig);
   }
 
 }
