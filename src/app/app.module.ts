@@ -8,6 +8,8 @@ import { AppMaterialModule } from './app-material.module';
 import { CoreModule } from './core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
+// <<< Importar Servicios >>>
+import { UserService } from './home/employees-crud/employee.service';
 
 // <<< Importar Componentes >>>
 import { AppComponent } from './app.component';
@@ -39,7 +41,9 @@ import { EmployeesCrudComponent } from './home/employees-crud/employees-crud.com
     CoreModule,
   ],
   // Servicos
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
