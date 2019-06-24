@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {MatTableDataSource, MatTable} from '@angular/material';
 
 @Component({
   selector: 'app-crud',
@@ -21,7 +21,7 @@ export class CrudComponent {
   @Output() delete = new EventEmitter<any>();
 
   dataSource: MatTableDataSource<any>;
-
+    
   @Input()
   set data(data: any[]) {
     this.dataSource = new MatTableDataSource<any>(data);

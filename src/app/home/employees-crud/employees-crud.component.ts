@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from './employee.service';
 import { EmployeeDialogService } from './employee-dialog.service';
+import { Employee } from './employee.model';
 
 
 @Component({
@@ -14,14 +15,16 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
 
   title = 'Employees management';
   columns = ['firstName', 'lastName', 'email'];
-  data;
+
+  data: Employee[];
 
   createEmpDialogSub = null;
   updateEmpDialogSub = null;
   readEmpDialogSub = null;
   deleteEmpDialogSub = null;
 
-  userServiceSub;
+  userReadAll = null;
+  userUpdate = null;
 
   constructor(
     private userService: UserService,
@@ -29,10 +32,12 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-   this.userServiceSub = this.userService.readAll().subscribe((employees) => {
+   this.userReadAll = this.userService.readAll().subscribe((employees) => {
       this.data = employees;
     });
   }
+
+ 
 
   create(){
     console.log("create");
@@ -62,7 +67,16 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
     this.updateEmpDialogSub = this.employeeDialogService.updateEmployee($event).subscribe(
       employee => {
         if (employee) {
-          console.log(employee);
+          
+          this.userUpdate = this.userService.update(employee).subscribe( (employeeResponse) => {
+            this.data = this.data.map( (empl) => {
+              if(empl.id === employeeResponse.id){
+                empl = employeeResponse;
+              }
+              return empl;
+            });
+          });
+    
         }
       });
   }
@@ -79,7 +93,9 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.userServiceSub.unsubscribe();
+    this.userReadAll.unsubscribe();
+    if(this.userUpdate) this.userUpdate.unsubscribe();
+
     if(this.createEmpDialogSub !== null) this.createEmpDialogSub.unsubscribe();
     if(this.readEmpDialogSub !== null) this.readEmpDialogSub.unsubscribe();
     if(this.updateEmpDialogSub !== null) this.updateEmpDialogSub.unsubscribe();

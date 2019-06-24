@@ -14,4 +14,8 @@ export class UserService {
         return this.httpService.get(ApiEndpoint.EMPLOYEES);
     }
 
+    update(employee: Employee): Observable<Employee> {
+        return this.httpService.put(ApiEndpoint.EMPLOYEES, employee);
+    }
+
 }
