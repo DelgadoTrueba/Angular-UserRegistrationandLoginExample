@@ -7,34 +7,41 @@ import { DropdownQuestion } from 'src/app/core/components/dinamic-form/models/qu
 import { Observable } from 'rxjs';
 
 import {cloneDeep} from 'lodash';
+import { IdQuestion } from 'src/app/core/components/dinamic-form/models/question-id';
 
 @Injectable()
 export class EmployeeDialogService {
 
   resource = "Employee";
 
+  idField = new IdQuestion({
+    key: 'id',
+    label: 'Id',
+    order: 1,
+  });
+
   firstaNameField = new TextboxQuestion({
     key: 'firstName',
     label: 'First name',
-    order: 1,
+    order: 2,
     required: true,
   });
 
   lastaNameField = new TextboxQuestion({
     key: 'lastName',
     label: 'Last name',
-    order: 2,
-    required: true,
-  });
-
-  emailField = new TextboxQuestion({
-    key: 'emailAddress',
-    label: 'Email',
     order: 3,
     required: true,
   });
 
-  fields = [this.firstaNameField, this.lastaNameField, this.emailField]
+  emailField = new TextboxQuestion({
+    key: 'email',
+    label: 'Email',
+    order: 4,
+    required: true,
+  });
+
+  fields = [this.idField, this.firstaNameField, this.lastaNameField, this.emailField]
   
   
   constructor(
@@ -96,6 +103,7 @@ export class EmployeeDialogService {
   }
 
   getReadDeleteEmplQuestions(employee){
+      let idField = cloneDeep(this.idField);
       let firstaNameField = cloneDeep(this.firstaNameField);
       let lastaNameField = cloneDeep(this.lastaNameField);
       let emailField = cloneDeep(this.emailField);
@@ -104,25 +112,28 @@ export class EmployeeDialogService {
       lastaNameField.readonly = true;
       emailField.readonly = true;
 
+      idField.value = employee.id;
       firstaNameField.value = employee.firstName;
       lastaNameField.value = employee.lastName;
       emailField.value = employee.email;
 
 
-    return this.getOrderedQuestions([firstaNameField, lastaNameField, emailField]);
+    return this.getOrderedQuestions([idField, firstaNameField, lastaNameField, emailField]);
   }
 
   getUpdateEmplQuestions(employee){
+    let idField = cloneDeep(this.idField);
     let firstaNameField = cloneDeep(this.firstaNameField);
     let lastaNameField = cloneDeep(this.lastaNameField);
     let emailField = cloneDeep(this.emailField);
 
+    idField.value = employee.id;
     firstaNameField.value = employee.firstName;
     lastaNameField.value = employee.lastName;
     emailField.value = employee.email;
 
 
-  return this.getOrderedQuestions([firstaNameField, lastaNameField, emailField]);
+  return this.getOrderedQuestions([idField, firstaNameField, lastaNameField, emailField]);
 }
 
   getOrderedQuestions(questionsUnordered) {

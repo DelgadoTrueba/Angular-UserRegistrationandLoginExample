@@ -21,8 +21,6 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
   readEmpDialogSub;
   deleteEmpDialogSub;
 
-
-
   constructor(
     private userService: UserService,
     private employeeDialogService: EmployeeDialogService,
@@ -46,7 +44,7 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
   }
 
   read($event){
-    console.log("read", $event);
+    console.log("read");
 
     this.readEmpDialogSub = this.employeeDialogService.readEmployee($event).subscribe(
       employee => {
@@ -57,7 +55,7 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
   }
 
   update($event){
-    console.log("update", $event);
+    console.log("update");
 
     this.updateEmpDialogSub = this.employeeDialogService.updateEmployee($event).subscribe(
       employee => {
@@ -68,7 +66,7 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
   }
 
   delete($event){
-    console.log("delete", $event);
+    console.log("delete");
 
     this.deleteEmpDialogSub = this.employeeDialogService.deleteEmployee($event).subscribe(
       employee => {
