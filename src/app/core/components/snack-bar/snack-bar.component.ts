@@ -26,7 +26,8 @@ export class SnackBarComponent implements OnInit, OnDestroy {
   private openNotification(message: string){
     
     let config = new MatSnackBarConfig();
-    config.duration = 3000;
+    
+    //config.duration = 10000;
     
     this.snackbar.open(message, "close", config);
   }

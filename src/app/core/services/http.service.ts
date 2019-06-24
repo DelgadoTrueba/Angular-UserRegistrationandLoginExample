@@ -42,7 +42,7 @@ export class HttpService {
     return this.authBasic(user, password).post(endPoint).pipe(
       map(token => {
         
-        token = token.substring(6);
+        token = token.substring(7);
 
         const helper = new JwtHelperService();
 
@@ -144,6 +144,7 @@ export class HttpService {
 
   private createOptions(): any {
     if (this.token !== undefined) {
+      console.log(this.token)
       this.header('Authorization', 'Bearer ' + this.token.token);
     }
     const options: any = {

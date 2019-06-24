@@ -16,10 +16,12 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
   columns = ['firstName', 'lastName', 'email'];
   data;
 
-  createEmpDialogSub;
-  updateEmpDialogSub;
-  readEmpDialogSub;
-  deleteEmpDialogSub;
+  createEmpDialogSub = null;
+  updateEmpDialogSub = null;
+  readEmpDialogSub = null;
+  deleteEmpDialogSub = null;
+
+  userServiceSub;
 
   constructor(
     private userService: UserService,
@@ -27,7 +29,7 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.userService.readAll().subscribe((employees) => {
+   this.userServiceSub = this.userService.readAll().subscribe((employees) => {
       this.data = employees;
     });
   }
@@ -77,10 +79,11 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.createEmpDialogSub.unsubscribe();
-    this.readEmpDialogSub.unsubscribe();
-    this.updateEmpDialogSub.unsubscribe();
-    this.deleteEmpDialogSub.unsubscribe();
+    this.userServiceSub.unsubscribe();
+    if(this.createEmpDialogSub !== null) this.createEmpDialogSub.unsubscribe();
+    if(this.readEmpDialogSub !== null) this.readEmpDialogSub.unsubscribe();
+    if(this.updateEmpDialogSub !== null) this.updateEmpDialogSub.unsubscribe();
+    if(this.deleteEmpDialogSub !== null) this.deleteEmpDialogSub.unsubscribe();
   }
 
 }
