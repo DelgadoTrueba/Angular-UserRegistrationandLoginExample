@@ -4,13 +4,15 @@
         <div *ngSwitchCase="'textbox'">
             
             <mat-form-field class="form-row">
+                <!--TEXTBOX REQUIRED-->
                 <input matInput *ngIf="question.required"
                         [placeholder]="question.label" [formControlName]="question.key"
-                        [id]="question.key" required>
+                        [id]="question.key" required [type]="question.type">
 
+                <!--TEXTBOX !REQUIRED-->
                 <input matInput *ngIf="!question.required"
                         [placeholder]="question.label" [formControlName]="question.key"
-                        [id]="question.key">
+                        [id]="question.key" [type]="question.type">            
 
                 <mat-error *ngIf="isRequired()">
                     This field is required.

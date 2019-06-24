@@ -14,8 +14,23 @@ export class QuestionControlService {
     let group: any = {};
 
     questions.forEach(question => {
-      group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
-                                              : new FormControl(question.value || '');
+      let value = question.value || '';
+      let validators = [];
+
+      if(question.readonly){
+        value = {value: question.value, disabled: true};
+      }
+
+      if(question.required){
+        validators.push(Validators.required);
+      }
+  
+      if(validators.length != 0){
+        group[question.key] = new FormControl(value, validators);
+      }
+      else{
+        group[question.key] = new FormControl(value);
+      }
     });
     return new FormGroup(group);
   }

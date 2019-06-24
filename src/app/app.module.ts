@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // <<< Importar Servicios >>>
 import { UserService } from './home/employees-crud/employee.service';
+import { EmployeeDialogService } from './home/employees-crud/employee-dialog.service';
 
 // <<< Importar Componentes >>>
 import { AppComponent } from './app.component';
@@ -42,7 +43,8 @@ import { EmployeesCrudComponent } from './home/employees-crud/employees-crud.com
   ],
   // Servicos
   providers: [
-    UserService
+    UserService,
+    EmployeeDialogService
   ],
   bootstrap: [AppComponent]
 })
