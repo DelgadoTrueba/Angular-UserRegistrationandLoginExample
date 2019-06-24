@@ -20,7 +20,6 @@ import { CrudComponent } from './components/crud/crud.component';
 import { CruzDialogComponent } from './components/cruz-dialog/cruz-dialog.component';
 import { DynamicFormComponent } from './components/dinamic-form/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './components/dinamic-form/dynamic-form-question/dynamic-form-question.component';
-import { PruebaComponent } from './components/dinamic-form/prueba.component';
 
 @NgModule({
   // Modulos
@@ -41,7 +40,6 @@ import { PruebaComponent } from './components/dinamic-form/prueba.component';
     CruzDialogComponent,
     DynamicFormComponent,
     DynamicFormQuestionComponent,
-    PruebaComponent,
   ],
   // Exports Componentes, Pipes y Directivas
   exports: [
@@ -52,7 +50,6 @@ import { PruebaComponent } from './components/dinamic-form/prueba.component';
     CruzDialogComponent,
     DynamicFormComponent,
     DynamicFormQuestionComponent,
-    PruebaComponent,
   ],
   // Dialog
   entryComponents: [

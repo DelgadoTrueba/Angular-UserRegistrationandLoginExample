@@ -6,12 +6,8 @@
         </div>
         
     
-        <button type="submit" [disabled]="!form.valid" 
+        <button type="submit" [disabled]="!form.valid"
                 mat-raised-button color="primary" class="form-row">Save</button>
-    </form>
-    
-    <div *ngIf="payLoad" class="form-row">
-        <strong>Saved the following values</strong><br>{{payLoad}}
-    </div>
 
+    </form>
 </div>
