@@ -5,14 +5,20 @@
             
             <mat-form-field class="form-row">
                 <!--TEXTBOX REQUIRED-->
-                <input matInput *ngIf="question.required"
+                <input matInput *ngIf="question.required && !question.readonly"
                         [placeholder]="question.label" [formControlName]="question.key"
                         [id]="question.key" required [type]="question.type">
 
                 <!--TEXTBOX !REQUIRED-->
                 <input matInput *ngIf="!question.required"
                         [placeholder]="question.label" [formControlName]="question.key"
-                        [id]="question.key" [type]="question.type">            
+                        [id]="question.key" [type]="question.type">  
+                        
+                <!--TEXTBOX !READONLY-->
+                <input matInput *ngIf="question.readonly"
+                [placeholder]="question.label" [formControlName]="question.key"
+                [readonly]="true"
+                [id]="question.key" [type]="question.type">  
 
                 <mat-error *ngIf="isRequired()">
                     This field is required.

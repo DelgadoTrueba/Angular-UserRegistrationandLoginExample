@@ -7,10 +7,12 @@ import { QuestionControlService }    from './services/question-control.service';
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
+  styleUrls: ['./dynamic-form.component.scss'],
   providers: [ QuestionControlService ]
 })
 export class DynamicFormComponent implements OnInit {
  
+  @Input() action : string;
   @Input() questions: QuestionBase<any>[] = [];
   form: FormGroup;
 

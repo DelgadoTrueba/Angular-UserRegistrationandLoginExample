@@ -12,3 +12,11 @@
 @import 'themes/theme';
 
 @import 'shame';
+
+.mat-success{
+    @include mat-success;
+}
+  
+.mat-update{
+    @include mat-update;
+}

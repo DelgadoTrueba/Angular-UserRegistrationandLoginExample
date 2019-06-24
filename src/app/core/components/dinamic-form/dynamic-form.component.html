@@ -6,8 +6,16 @@
         </div>
         
     
-        <button type="submit" [disabled]="!form.valid"
-                mat-raised-button color="primary" class="form-row">Save</button>
+        <button *ngIf="action === 'Create'"
+                type="submit" [disabled]="!form.valid"
+                mat-raised-button [color]="'success'" class="form-row">Create</button>
+                
+        <button *ngIf="action === 'Update'"
+                type="submit" [disabled]="!form.valid"
+                mat-raised-button [color]="'update'" class="form-row">Update</button>
 
+        <button *ngIf="action === 'Delete'"
+                type="submit" [disabled]="!form.valid"
+                mat-raised-button color="warn" class="form-row">Delete</button>
     </form>
 </div>

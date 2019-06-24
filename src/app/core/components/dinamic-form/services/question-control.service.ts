@@ -18,7 +18,7 @@ export class QuestionControlService {
       let validators = [];
 
       if(question.readonly){
-        value = {value: question.value, disabled: true};
+        //value = {value: question.value, disabled: true};
       }
 
       if(question.required){
