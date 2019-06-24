@@ -14,8 +14,16 @@ export class UserService {
         return this.httpService.get(ApiEndpoint.EMPLOYEES);
     }
 
+    create(employee: Employee): Observable<Employee> {
+        return this.httpService.post(ApiEndpoint.EMPLOYEES, employee);
+    }
+
     update(employee: Employee): Observable<Employee> {
         return this.httpService.put(ApiEndpoint.EMPLOYEES, employee);
+    }
+
+    delete(id: number): Observable<Employee> {
+        return this.httpService.delete(ApiEndpoint.EMPLOYEES + "/" + id);
     }
 
 }

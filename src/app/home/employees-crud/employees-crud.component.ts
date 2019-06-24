@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/co
 import { UserService } from './employee.service';
 import { EmployeeDialogService } from './employee-dialog.service';
 import { Employee } from './employee.model';
+import {cloneDeep} from 'lodash';
 
 
 @Component({
@@ -23,21 +24,16 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
   readEmpDialogSub = null;
   deleteEmpDialogSub = null;
 
-  userReadAll = null;
-  userUpdate = null;
-
   constructor(
     private userService: UserService,
     private employeeDialogService: EmployeeDialogService,
   ) { }
 
   ngOnInit() {
-   this.userReadAll = this.userService.readAll().subscribe((employees) => {
+    this.userService.readAll().subscribe((employees) => {
       this.data = employees;
     });
   }
-
- 
 
   create(){
     console.log("create");
@@ -45,7 +41,14 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
     this.createEmpDialogSub = this.employeeDialogService.createEmployee().subscribe(
       employee => {
         if (employee) {
-          console.log(employee);
+          this.userService.create(employee).subscribe( (employeeResponse) => {
+            
+            let newData = cloneDeep(this.data);
+            newData.push(employee);
+
+            this.data = newData;
+
+          });
         }
       });
   }
@@ -53,10 +56,10 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
   read($event){
     console.log("read");
 
-    this.readEmpDialogSub = this.employeeDialogService.readEmployee($event).subscribe(
+    this.employeeDialogService.readEmployee($event).subscribe(
       employee => {
         if (employee) {
-          console.log(employee);
+          //console.log(employee);
         }
       });
   }
@@ -68,7 +71,7 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
       employee => {
         if (employee) {
           
-          this.userUpdate = this.userService.update(employee).subscribe( (employeeResponse) => {
+          this.userService.update(employee).subscribe( (employeeResponse) => {
             this.data = this.data.map( (empl) => {
               if(empl.id === employeeResponse.id){
                 empl = employeeResponse;
@@ -87,15 +90,19 @@ export class EmployeesCrudComponent implements OnInit, OnDestroy {
     this.deleteEmpDialogSub = this.employeeDialogService.deleteEmployee($event).subscribe(
       employee => {
         if (employee) {
-          console.log(employee);
+          this.userService.delete(employee.id).subscribe( () => {
+            //this.data.splice(employee.id-1);
+            this.data = this.data.filter(empl => {
+              if(empl.id !== employee.id){
+                return empl;
+              }
+            })
+          })
         }
       });
   }
 
   ngOnDestroy(): void {
-    this.userReadAll.unsubscribe();
-    if(this.userUpdate) this.userUpdate.unsubscribe();
-
     if(this.createEmpDialogSub !== null) this.createEmpDialogSub.unsubscribe();
     if(this.readEmpDialogSub !== null) this.readEmpDialogSub.unsubscribe();
     if(this.updateEmpDialogSub !== null) this.updateEmpDialogSub.unsubscribe();
