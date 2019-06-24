@@ -48,7 +48,6 @@ export class EmployeesCrudComponent implements OnInit {
 
     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
     this.dialog.open(CruzDialogComponent, dialogConfig);

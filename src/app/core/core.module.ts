@@ -18,6 +18,9 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { CancelYesDialogComponent } from './components/cancel-yes-dialog/cancel-yes-dialog.component';
 import { CrudComponent } from './components/crud/crud.component';
 import { CruzDialogComponent } from './components/cruz-dialog/cruz-dialog.component';
+import { DynamicFormComponent } from './components/dinamic-form/dynamic-form.component';
+import { DynamicFormQuestionComponent } from './components/dinamic-form/dynamic-form-question/dynamic-form-question.component';
+import { PruebaComponent } from './components/dinamic-form/prueba.component';
 
 @NgModule({
   // Modulos
@@ -36,6 +39,9 @@ import { CruzDialogComponent } from './components/cruz-dialog/cruz-dialog.compon
     CancelYesDialogComponent,
     CrudComponent,
     CruzDialogComponent,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent,
+    PruebaComponent,
   ],
   // Exports Componentes, Pipes y Directivas
   exports: [
@@ -43,7 +49,10 @@ import { CruzDialogComponent } from './components/cruz-dialog/cruz-dialog.compon
     SnackBarComponent,
     CancelYesDialogComponent,
     CrudComponent,
-    CruzDialogComponent
+    CruzDialogComponent,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent,
+    PruebaComponent,
   ],
   // Dialog
   entryComponents: [
@@ -54,7 +63,7 @@ import { CruzDialogComponent } from './components/cruz-dialog/cruz-dialog.compon
   providers: [
     SnackBarNotification,
     HttpService,
-    TokensService
+    TokensService,
   ]
 })
 export class CoreModule {
