@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Login", () => {
+describe("Management Employees - CREATE", () => {
     
     beforeEach(() => {
         // Start server to listen to routes.
@@ -30,17 +30,17 @@ describe("Login", () => {
 
       cy.get('.mat-header-row > .cdk-column-actions > .mat-button > .mat-button-wrapper > .mat-icon').click();
   
-      cy.get('#firstName').type("Jose Manuel");
-      cy.get('#lastName').type("Delgado Trueba");
-      cy.get('#email').type("cd@gmail.com");    
+      cy.get('#firstName').type("NewEmployee");
+      cy.get('#lastName').type("NewEmployee");
+      cy.get('#email').type("NewEmployee@gmail.com");    
 
       cy.get('.mat-raised-button').click();
 
-      cy.get('mat-table').find("mat-cell").contains("Jose Manuel").parent().as("field");
+      cy.get('mat-table').find("mat-cell").contains("NewEmployee").parent().as("field");
 
-      cy.get("@field").should('contain', 'Jose Manuel');
-      cy.get("@field").should('contain', 'Delgado Trueba');
-      cy.get("@field").find("mat-cell").should('contain', 'cd@gmail.com');
+      cy.get("@field").should('contain', 'NewEmployee');
+      cy.get("@field").should('contain', 'NewEmployee');
+      cy.get("@field").find("mat-cell").should('contain', 'NewEmployee@gmail.com');
 
     });
 

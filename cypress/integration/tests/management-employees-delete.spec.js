@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("Login", () => {
+describe("Management Employees - DELETE", () => {
     
     beforeEach(() => {
     
