@@ -5,14 +5,16 @@
     <form [formGroup]="userForm" (ngSubmit)="onSubmit();">
     
       <mat-form-field class="full-width">
-        <input matInput placeholder="User Name" formControlName="userName" required>
+        <input matInput placeholder="User Name" formControlName="userName" required
+                id="userName">
         <mat-error *ngIf="userNameRequired()">
           This field is required.
         </mat-error>
       </mat-form-field>
     
       <mat-form-field class="full-width">
-        <input matInput placeholder="Password" formControlName="password" required type="password">
+        <input matInput placeholder="Password" formControlName="password" required type="password"
+                id="password">
         <mat-error *ngIf="passwordRequired()">
           This field is required.
         </mat-error>
@@ -20,7 +22,8 @@
     
       <br><br>
     
-      <button mat-raised-button color="primary" type="submit" [disabled]="!userForm.valid">Login</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!userForm.valid"
+              id="submit">Login</button>
     
     </form> 
 
