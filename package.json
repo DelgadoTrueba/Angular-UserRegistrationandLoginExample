@@ -11,7 +11,7 @@
     "cypress:open": "./node_modules/.bin/cypress open",
     "cypress:run": "./node_modules/.bin/cypress run --spec ./cypress/integration/tests/**/*",
     "start:ci": "http-server ./dist -a localhost -p 4200",
-    "cypress:ci": "ng build --prod && run-p start:ci cypress:run"
+    "cypress:ci": "ng build --prod && run-p --race start:ci cypress:run"
   },
   "private": true,
   "dependencies": {
