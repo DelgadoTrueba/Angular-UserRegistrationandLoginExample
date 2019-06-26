@@ -1,4 +1,7 @@
 {
     "baseUrl": "http://localhost:4200",
-    "video": false
+    "video": false,
+    "env": {
+        "apiUrl": "https://api-rest-with-spring.herokuapp.com/api/v0"
+    }
 }

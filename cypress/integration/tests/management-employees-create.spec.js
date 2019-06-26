@@ -6,18 +6,19 @@ describe("Management Employees - CREATE", () => {
         // Start server to listen to routes.
         cy.server();
 
+        
         // Intercept HTTP request
         cy.route( 
           {
             method: 'GET',
-            url: 'http://localhost:8080/api/v0/employees',
+            url:   Cypress.env("apiUrl") + '/employees',
             status: 200,
             response: []
           }
         )
         .as('TOKEN'); 
 
-        cy.visit("/welcome/login");
+		cy.visit("/");
 
         cy.get('#userName').type("admin");
         cy.get('#password').type('admin');

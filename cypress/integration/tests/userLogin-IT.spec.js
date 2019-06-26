@@ -3,7 +3,7 @@
 describe("Login", () => {
     
     beforeEach(() => {
-        cy.visit("/welcome/login");
+		cy.visit("/");
     });
   
     it("Not valid user login", () => {

@@ -6,7 +6,7 @@ describe("Management Employees - EDIT", () => {
     
         cy.request({
             method: 'POST',
-            url: 'http://localhost:8080/api/v0/users/token',
+            url:  Cypress.env("apiUrl") + '/users/token',
             auth: {
                 'user': 'admin',
                 'pass': 'admin',
@@ -19,7 +19,7 @@ describe("Management Employees - EDIT", () => {
 
             cy.request({
                 method: 'POST',
-                url: 'http://localhost:8080/api/v0/employees',
+                url:  Cypress.env("apiUrl") + '/employees',
                 auth:{
                     'bearer': token,
                 },
@@ -34,7 +34,7 @@ describe("Management Employees - EDIT", () => {
 
         });
 
-        cy.visit("/welcome/login");
+		cy.visit("/");
 
         cy.get('#userName').type("admin");
         cy.get('#password').type('admin');
@@ -48,7 +48,7 @@ describe("Management Employees - EDIT", () => {
         cy.route( 
             {
               method: 'PUT',
-              url: 'http://localhost:8080/api/v0/employees',
+              url:  Cypress.env("apiUrl") + '/employees',
             }
           )
         .as('UPDATE_REQUEST');
@@ -84,7 +84,7 @@ describe("Management Employees - EDIT", () => {
 
                 cy.request({
                     method: 'DELETE',
-                    url: 'http://localhost:8080/api/v0/employees' + "/" + id,
+                    url:  Cypress.env("apiUrl") +  '/employees' + "/" + id,
                     auth:{
                       'bearer': token,
                     }
