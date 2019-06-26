@@ -2,23 +2,19 @@
 
 describe("Management Employees - CREATE", () => {
     
-    beforeEach(() => {
+    beforeEach(() => {    
         // Start server to listen to routes.
         cy.server();
 
-        
-        // Intercept HTTP request
         cy.route( 
-          {
-            method: 'GET',
-            url:   Cypress.env("apiUrl") + '/employees',
-            status: 200,
-            response: []
-          }
-        )
-        .as('TOKEN'); 
+            {
+              method: 'POST',
+              url:  Cypress.env("apiUrl") + '/employees',
+            }
+          )
+        .as('CREATE_REQUEST');
 
-		cy.visit("/");
+		    cy.visit("/");
 
         cy.get('#userName').type("admin");
         cy.get('#password').type('admin');
@@ -37,6 +33,7 @@ describe("Management Employees - CREATE", () => {
 
       cy.get('.mat-raised-button').click();
 
+      cy.wait("@CREATE_REQUEST");
       cy.get('mat-table').find("mat-cell").contains("NewEmployee").parent().as("field");
 
       cy.get("@field").should('contain', 'NewEmployee');
