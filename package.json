@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "postinstall": "ng build --prod",
     "start": "node server.js",
-    "build": "ng build",
+    "build": "ng --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
