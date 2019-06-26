@@ -1,4 +1,4 @@
-const PATH_PROJECT = './dist';
+const PATH_PROJECT = '/dist';
 
 const express = require('express');
 const http = require('http');
@@ -8,6 +8,8 @@ const app = express();
 const server = http.createServer(app);
 
 app.use(express.static(__dirname + PATH_PROJECT));
+
+console.log(path.join(__dirname, PATH_PROJECT, 'index.html'))
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, PATH_PROJECT, 'index.html')));
 
