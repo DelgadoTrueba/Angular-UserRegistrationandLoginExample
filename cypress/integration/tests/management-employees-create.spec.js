@@ -14,12 +14,21 @@ describe("Management Employees - CREATE", () => {
           )
         .as('CREATE_REQUEST');
 
+        cy.route( 
+          {
+            method: 'POST',
+            url:  Cypress.env("apiUrl") + '/users/token',
+          }
+        )
+      .as('TOKEN_REQUEST');
+
 		    cy.visit("/");
 
         cy.get('#userName').type("admin");
         cy.get('#password').type('admin');
         cy.get('#submit').click();
     
+        cy.wait("@TOKEN_REQUEST");
         cy.url().should('include', '/home');
     });
   
