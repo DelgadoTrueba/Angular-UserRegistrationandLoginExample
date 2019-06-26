@@ -7,3 +7,10 @@ script:
   - npm run cypress:ci
 branches:
   - master
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU_ApiKey
+  app: delgadotrueba-angular-login
+  on:
+    branch: master
