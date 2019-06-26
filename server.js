@@ -1,4 +1,4 @@
-const PATH_PROJECT = '/dist';
+const PATH_PROJECT = './dist';
 
 const express = require('express');
 const http = require('http');
